@@ -1,13 +1,28 @@
 
 import { Layout, Menu, theme, Typography } from 'antd';
 import { Footer } from 'antd/es/layout/layout';
-const { Header, Content } = Layout;
+import PageRoutes from './Routes';
+import { useNavigate } from 'react-router';
 
+
+const { Header, Content } = Layout;
 
 function App() {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+  const navigate = useNavigate();
+
+  const items = [
+    { key: '', label: 'Informacion de los problemas' }, 
+    { key: 'travel', label: 'Problema del Agente Viajero' }, 
+    { key: 'problem2', label: 'Problema 2' },
+    { key: 'problem3', label: 'Problema 3' }
+  ]
+
+  const onMenuClick = ({ key }) => {
+		navigate(`/${key}`);
+	};
   return (
     <Layout>
       <Header
@@ -21,11 +36,13 @@ function App() {
           theme="dark"
           mode="horizontal"
           defaultSelectedKeys={['2']}
-          items={[{ key: '1', label: 'Problema del Agente Viajero' }, { key: '2', label: 'nav 2' }]}
+          items={items}
           style={{
             flex: 1,
             minWidth: 0,
           }}
+          onClick={onMenuClick}
+
         />
       </Header>
       <Content
@@ -41,7 +58,7 @@ function App() {
             borderRadius: borderRadiusLG,
           }}
         >
-          Content
+          <PageRoutes />
         </div>
       </Content>
       <Footer
