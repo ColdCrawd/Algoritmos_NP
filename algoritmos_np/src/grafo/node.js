@@ -3,12 +3,21 @@ class Node {
     constructor(label){
         this.label = label;
         this.adyacentes = new Set();
+        this.estado = "N";
     }
 
     addAdyacentes(node) {
         if (!this.adyacentes.has(node)){
             this.adyacentes.add(node);
         }
+    }
+
+    getEstado(){
+        return this.estado;
+    }
+
+    setEstado(estado){
+        this.estado = estado;
     }
 
     getAdyacentes() {

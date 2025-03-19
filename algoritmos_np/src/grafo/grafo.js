@@ -5,6 +5,10 @@ class Grafo {
         this.listaAdyacnencia = new Map();
     }
 
+    getListaAdyacencia(){
+        return this.listaAdyacnencia;
+    }
+
     addNode(node){
         if(!this.listaAdyacnencia.has(node)){
             this.listaAdyacnencia.set(node, new Node(node));
@@ -35,6 +39,7 @@ class Grafo {
 
     deleteNode(){
         //TODO Que borre el nodo y sus aristas 
+
     }
 
     mostrarGrafo() {

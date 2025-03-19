@@ -3,9 +3,21 @@ import { Card, Col, Row } from 'antd'
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Grafo from '../grafo/grafo'
+import Cola from '../grafo/cola'
+import Pila from '../grafo/pila'
 
 const HamiltonPage = () => {
     const [grafo, setGrafo] = useState(null);
+
+    const cicloHamilton = (grafo) => {
+        const cola = new Cola();
+        cola.encolar(grafo.getListaAdyacencia()[0]);
+        const camino = new Pila();
+        while(!cola.isEmpty()){
+            camino.push()
+        }
+
+    };
 
     useEffect(() => {
         const nuevoGrafo = new Grafo();
