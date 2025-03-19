@@ -38,7 +38,7 @@ const PrincipalPage = () => {
             </Col>
             <Col xs={24} sm={12} md={8}>
                 <Card
-                    title = {'Problema del Agente Viajero'}
+                    title = {'Problema del Ciclo Hamiltoniano'}
                     style={{ width: '400px' }}
                     cover={
                     <img
@@ -46,7 +46,7 @@ const PrincipalPage = () => {
                         src={ProblemTravel}
                     />
                     }
-                    actions={[<SearchOutlined key="edit" onClick={()=>navigate(`/problem2`)}/>]}
+                    actions={[<SearchOutlined key="edit" onClick={()=>navigate(`/hamilton`)}/>]}
                     >
                 </Card>
             </Col>
