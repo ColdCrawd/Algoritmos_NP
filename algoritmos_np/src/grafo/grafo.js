@@ -7,7 +7,7 @@ class Grafo {
 
     addNode(node){
         if(!this.listaAdyacnencia.has(node)){
-            this.listaAdyacnencia.set(node, new Node(node)); //para mi: setea la key (Como lo llamamos internamente) y el valor que tiene
+            this.listaAdyacnencia.set(node, new Node(node));
         }
     }
 
@@ -32,6 +32,10 @@ class Grafo {
         value1.deleteAdyacente(value2);
         value2.deleteAdyacente(value1);
     }    
+
+    deleteNode(){
+        //TODO Que borre el nodo y sus aristas 
+    }
 
     mostrarGrafo() {
         for (let [valor, nodo] of this.listaAdyacnencia) {
