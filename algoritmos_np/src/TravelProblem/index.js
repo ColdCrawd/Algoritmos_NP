@@ -1,7 +1,10 @@
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
-import { Button, Card, Col, Form, Input, Radio, Row } from 'antd'
+import { Button, Card, Col, Form, Input, message, Radio, Row, Typography } from 'antd'
+import {getRouteByCommunitySolution, getRouteByStudentSolution} from './actions'
 import React, { useState } from 'react'
 import MapTSP from './Map';
+
+const { Title,  } = Typography;
 
 const options = [
     {
@@ -22,13 +25,35 @@ const limits = {
 };
 
 const TravelProblem = () => {
+    const [loading,setLoading] = useState(false)
     const [directions, setDirections] = useState([]);
+    const [orderedDirections, setOrderedDirections] = useState([])
+    const [distanceCost, setDistanceCost]=useState(0);
+    const [time, setTime] = useState(0);  
 
+    const onFinish = async (values) => {
+        try 
+        {
+            setLoading(true)
+            const response = values.solutionType === 0 ? await getRouteByStudentSolution(values) : await getRouteByCommunitySolution(values); ;
+            const orderedCities = response.route.map(index => directions[index]);
+            setDistanceCost(response.totalCost);
+            setTime(response.time);
+            setOrderedDirections(orderedCities)
+        }
+        catch (error) {
+            message.error('Error al obtener la solucion')
+        }finally{
+            setLoading(false)
+        }
+        
+        
+    }
     return (
         <Row gutter={[16, 16]}>
             <Col xs={24} md={12}>
                 <Card title={'Mapa'}>
-                   <MapTSP directions={directions}/>
+                   <MapTSP directions={directions} orderedDirections={orderedDirections}/>
                 </Card>
             </Col>
             <Col xs={24} md={12}>
@@ -36,7 +61,7 @@ const TravelProblem = () => {
                     <Form 
                         layout='vertical' 
                         variant={'underlined'} 
-                        onFinish={(values)=> console.log(values)}                        
+                        onFinish={onFinish}                        
                          onValuesChange={(_, allValues) => {setDirections(allValues.directions)}}
                     >
                         <Form.List
@@ -127,18 +152,25 @@ const TravelProblem = () => {
                             )}
                         </Form.List>
 
-                        <Form.Item>
+                        <Form.Item name={'solutionType'} initialValue={0}>
                             <Radio.Group block options={options} defaultValue={0} buttonStyle="solid" optionType="button" />
                         </Form.Item>
 
                         <Form.Item
                             style={{ width: '100%' }}
                         >
-                            <Button type="primary" htmlType="submit" style={{ width: '100%' }}>
+                            <Button type="primary" htmlType="submit" style={{ width: '100%' }} loading = {loading}>
                                 Ejecutar Solucion
                             </Button>
                         </Form.Item>
                     </Form>
+                    {distanceCost !== 0 && time !== 0 && (
+                        <Col xs={24} md={24}>
+                            <Title level={2}>Resultados</Title>
+                            <Title level={4}>Distancia: {distanceCost.toFixed(2)} Km</Title>
+                            <Title level={4}>Tiempo: {time.toFixed(4)} ms</Title>
+                        </Col>
+                    )}
                 </Card>
             </Col>
         </Row>

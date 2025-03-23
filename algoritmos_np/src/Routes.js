@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import PrincipalPage from "./PrincipalPage/PrincipalPage";
 import TravelProblem from "./TravelProblem/index";
 import HamiltonPage from "./Hamilton/HamiltonPage";
+import KnapsackPage from "./KnapsackProblem";
 
 const PageRoutes = () => {
   return (
@@ -10,7 +11,7 @@ const PageRoutes = () => {
         <Route path="/" element={<PrincipalPage/>}/>
         <Route path="/travel" element={<TravelProblem/>} />
         <Route path="/hamilton" element={<HamiltonPage/>} />
-        <Route path="/problem3" element={<div>hola mundo 5</div>} />
+        <Route path="/knapsack" element={<KnapsackPage/>} />
         <Route path="*" element={<Navigate to="/" />} />
     </Routes>   
   );

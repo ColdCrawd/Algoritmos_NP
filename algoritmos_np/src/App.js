@@ -17,7 +17,7 @@ function App() {
     { key: '', label: 'Informacion de los problemas' }, 
     { key: 'travel', label: 'Problema del Agente Viajero' }, 
     { key: 'hamilton', label: 'Problema del Ciclo Hamiltoniano' },
-    { key: 'problem3', label: 'Problema 3' }
+    { key: 'knapsack', label: 'Problema de Knapsack' }
   ]
 
   const onMenuClick = ({ key }) => {

@@ -1,8 +1,12 @@
 import { SearchOutlined } from '@ant-design/icons'
-import { Card, Col, Row } from 'antd'
+import { Card, Col, Row, Typography } from 'antd'
 import ProblemTravel from './images/Problem1.jpg'
+import ProblemHamilton from './images/Grafohamilton.png'
+import ProblemKnapsack from './images/knapsack.png'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+const { Title, Paragraph } = Typography;
+
 
 const PrincipalPage = () => {
   const navigate = useNavigate();
@@ -22,18 +26,29 @@ const PrincipalPage = () => {
                     }
                     actions={[<SearchOutlined key="edit" onClick={()=>navigate(`/travel`)}/>]}
                 >
-                    <p>
-                    El Problema del Agente Viajero (TSP, por sus siglas en inglés) es un problema de optimización combinatoria que busca determinar la ruta más corta posible que permita a un agente viajar a través de un conjunto de ciudades, visitando cada ciudad exactamente una vez y regresando a la ciudad de origen. Este problema es conocido por ser NP-completo, lo que significa que no existe un algoritmo eficiente conocido para resolverlo en todos los casos.
-                    </p>
-                    <p>
-                    El TSP tiene aplicaciones en diversas áreas, como la logística, la planificación de rutas, la fabricación y la genética. Por ejemplo, en la logística, se puede utilizar para optimizar las rutas de entrega de paquetes, minimizando el tiempo y el costo de transporte. En la fabricación, se puede aplicar para optimizar el recorrido de una máquina que debe realizar operaciones en diferentes puntos de una pieza.
-                    </p>
-                    <p>
-                    Existen varias aproximaciones para resolver el TSP, que van desde métodos exactos hasta heurísticas y metaheurísticas. Los métodos exactos, como la programación lineal entera y la ramificación y poda, garantizan encontrar la solución óptima, pero pueden ser computacionalmente costosos para grandes conjuntos de ciudades. Las heurísticas, como el algoritmo del vecino más cercano y el algoritmo de inserción, proporcionan soluciones rápidas pero no garantizan la optimalidad. Las metaheurísticas, como el algoritmo genético, el recocido simulado y la búsqueda tabú, buscan un equilibrio entre la calidad de la solución y el tiempo de cómputo.
-                    </p>
-                    <p>
-                    A pesar de su simplicidad en la formulación, el TSP sigue siendo un área activa de investigación debido a su complejidad y su relevancia práctica. Los avances en algoritmos y técnicas de optimización continúan mejorando nuestra capacidad para abordar este y otros problemas NP-completos, acercándonos cada vez más a soluciones eficientes para problemas complejos del mundo real.
-                    </p>
+                    <Typography>
+                        <Title level={4}>Descripción</Title>
+                        <Paragraph>
+                        El problema del agente viajero (TSP) es un problema de optimización combinatoria. 
+                        Consiste en encontrar la ruta más corta posible que permita visitar un conjunto de ciudades exactamente una vez y regresar a la ciudad de origen.
+                        </Paragraph>
+                        <Title level={4}>Importancia</Title>
+                        <Paragraph>
+                        Este problema tiene aplicaciones en la logística, la planificación de rutas, y la optimización de procesos. 
+                        Resolverlo eficientemente puede reducir costos y mejorar la eficiencia en diversas industrias.
+                        </Paragraph>
+                        <Title level={4}>Ejemplo</Title>
+                        <Paragraph>
+                        Imagina que un vendedor debe visitar varias ciudades. El objetivo es encontrar la ruta más corta que le permita visitar todas las ciudades y regresar al punto de partida.
+                        </Paragraph>
+                        <Title level={4}>Desafíos</Title>
+                        <Paragraph>
+                        El problema del agente viajero es NP-completo, lo que significa que no se conoce un algoritmo eficiente para resolver 
+                        todos los casos posibles en tiempo polinómico. Esto lo convierte en un problema desafiante y de gran interés para los 
+                        investigadores en ciencias de la computación.
+                        </Paragraph>
+                    </Typography>
+
                 </Card>
             </Col>
             <Col xs={24} sm={12} md={8}>
@@ -43,25 +58,73 @@ const PrincipalPage = () => {
                     cover={
                     <img
                         alt="example"
-                        src={ProblemTravel}
+                        src={ProblemHamilton}
                     />
                     }
                     actions={[<SearchOutlined key="edit" onClick={()=>navigate(`/hamilton`)}/>]}
-                    >
+                >
+                    <Typography>
+                    <Title level={4}>Descripción</Title>
+                    <Paragraph>
+                    El problema del ciclo hamiltoniano es un problema clásico de la teoría de grafos. 
+                    Consiste en determinar si existe un ciclo en un grafo que visite cada vértice exactamente una vez.
+                    </Paragraph>
+                    <Title level={4}>Importancia</Title>
+                    <Paragraph>
+                    Este problema es importante en diversas áreas como la optimización, la teoría de la computación y la investigación operativa. 
+                    Encontrar una solución eficiente para este problema puede tener aplicaciones significativas en la planificación de rutas, 
+                    la organización de circuitos y la bioinformática.
+                    </Paragraph>
+                    <Title level={4}>Ejemplo</Title>
+                    <Paragraph>
+                    Considera un grafo con los vértices A, B, C y D. Un ciclo hamiltoniano en este grafo podría ser A - B - C - D - A, 
+                    donde cada vértice es visitado exactamente una vez antes de regresar al vértice inicial.
+                    </Paragraph>
+                    <Title level={4}>Desafíos</Title>
+                    <Paragraph>
+                    El problema del ciclo hamiltoniano es NP-completo, lo que significa que no se conoce un algoritmo eficiente para resolver 
+                    todos los casos posibles en tiempo polinómico. Esto lo convierte en un problema desafiante y de gran interés para los 
+                    investigadores en ciencias de la computación.
+                    </Paragraph>
+                    </Typography>
                 </Card>
             </Col>
             <Col xs={24} sm={12} md={8}>
-                    <Card
-                    title = {'Problema del Agente Viajero'}
+                <Card
+                    title = {'Problema de Knapsack'}
                     style={{ width: '400px' }}
                     cover={
                     <img
                         alt="example"
-                        src={ProblemTravel}
+                        src={ProblemKnapsack}
                     />
                     }
-                    actions={[<SearchOutlined key="edit" onClick={()=>navigate(`/problem3`)}/>]}
-                    >
+                    actions={[<SearchOutlined key="edit" onClick={()=>navigate(`/knapsack`)}/>]}
+                >
+                    <Typography>
+                        <Title level={4}>Descripción</Title>
+                        <Paragraph>
+                        El problema de la mochila (Knapsack) es un problema de optimización combinatoria. 
+                        Se trata de seleccionar un subconjunto de elementos con pesos y valores dados, 
+                        de manera que el valor total sea lo más alto posible sin exceder un peso máximo permitido.
+                        </Paragraph>
+                        <Title level={4}>Importancia</Title>
+                        <Paragraph>
+                        Este problema tiene aplicaciones en diversas áreas como la economía, la logística y la informática. 
+                        Resolverlo eficientemente puede ayudar en la toma de decisiones sobre la asignación de recursos limitados.
+                        </Paragraph>
+                        <Title level={4}>Ejemplo</Title>
+                        <Paragraph>
+                        Imagina que tienes una mochila con una capacidad de 50 kg y varios objetos con diferentes pesos y valores. 
+                        El objetivo es maximizar el valor total de los objetos que puedes llevar sin exceder la capacidad de la mochila.
+                        </Paragraph>
+                        <Title level={4}>Desafíos</Title>
+                        <Paragraph>
+                        El problema de la mochila es NP-completo, lo que significa que no se conoce un algoritmo eficiente para resolver 
+                        todos los casos posibles en tiempo polinómico. Esto lo convierte en un problema desafiante y de gran interés para los 
+                        investigadores en ciencias de la computación.
+                        </Paragraph>
+                    </Typography>
                 </Card>
             </Col>
       </Row>
