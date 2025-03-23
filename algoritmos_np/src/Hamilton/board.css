@@ -1,0 +1,32 @@
+#gameboard {
+    display: flex;
+    flex-direction: column;
+    width: 480px;
+    height: 480px;
+    border: 2px;
+}
+
+.row {
+    display: flex;
+}
+
+.square {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.beige {
+    background-color: rgb(110, 110, 98);
+}
+
+.brown {
+    background-color: rgb(169, 43, 43);
+}
+
+.highlight {
+    background-color: rgb(184, 238, 67) !important;
+}

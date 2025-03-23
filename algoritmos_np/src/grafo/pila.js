@@ -2,6 +2,7 @@ class Pila {
     constructor() {
         this.pila = [];
         this.raiz = 0;
+        this.final = 0;
     }
 
     push(valor) {

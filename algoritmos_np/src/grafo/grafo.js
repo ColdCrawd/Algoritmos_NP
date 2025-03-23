@@ -1,8 +1,22 @@
+/*
 import Node from "./node";
 
 class Grafo {
     constructor() {
         this.listaAdyacnencia = new Map();
+    }
+
+    reiniciarEstados(){
+        for(let nodo of this.listaAdyacnencia){
+            nodo.setEstado("N");
+        }
+    }
+
+    isEmpty(){
+        if(this.getSize() == 0){
+            return true;
+        }
+        return false;
     }
 
     getListaAdyacencia(){
@@ -48,6 +62,11 @@ class Grafo {
         }
     }
 
+    getSize() {
+        return this.listaAdyacnencia.size;
+    }
+
 }
 
 export default Grafo;
+*/

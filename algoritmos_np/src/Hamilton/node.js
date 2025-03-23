@@ -11,6 +11,10 @@ class Node {
             this.adyacentes.add(node);
         }
     }
+    
+    clearAdyacentes() {
+        this.adyacentes.clear();
+    }
 
     getEstado(){
         return this.estado;
