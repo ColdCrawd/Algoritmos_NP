@@ -1,10 +1,11 @@
-import { Card, Col, Row, Button, Form, Radio, InputNumber  } from 'antd'
+import { Card, Col, Row, Button, Form, Radio, InputNumber,Typography } from 'antd'
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Grafo from './Grafo'
 import "./board.css"
 import Tablero from './tablero.js'
 
+const { Title,  } = Typography;
 
 const options = [
     {
@@ -46,17 +47,17 @@ const HamiltonPage = () => {
             const response = await fetch(ruta, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ grafo: grafoJSON, inicio:posicionCaballo }),
+                body: JSON.stringify({ grafo: grafoJSON, inicio: posicionCaballo }),
             });
-            
+
             const data = await response.json();
             console.log("Respuesta del servidor:", data.resultado);
-            if(data.success){
+            if (data.success) {
                 setCamino(data.resultado.camino);
                 setTiempo(data.resultado.tiempo);
-            }else{
+            } else {
                 console.error("Error al obtener el ciclo Hamiltoniano");
-            }     
+            }
         } catch (error) {
             console.error("Error al enviar datos:", error);
         }
@@ -66,7 +67,7 @@ const HamiltonPage = () => {
         console.log("Nuevo valor recibido:", value)
         setTam(value);
     };
-    
+
     const handleOptionChange = (e) => {
         setSelectedOption(e.target.value);
     };
@@ -74,21 +75,23 @@ const HamiltonPage = () => {
 
     return (
         <Card title={'Problema del Ciclo Hamiltoniano'}>
-            <p>Seleccione la posicion inicial para el caballo y ejecute la solución </p>
+            
             <Row gutter={[16, 16]}>
                 <Col xs={24} md={12}>
                     <Card
                         title={'Problema propuesto por Edgar'}
                         style={{ width: '100%' }}
                     >
-                        {grafo && <Tablero 
-                        grafo={setGrafo}
-                        posicionCaballo={posicionCaballo} 
-                        setPosicionCaballo={setPosicionCaballo}
-                        tam = {tam}
-                        camino = {camino}
+                        <Title level={4}>Seleccione la posición inicial del caballo</Title>
+                        {grafo && <Tablero
+                            grafo={setGrafo}
+                            posicionCaballo={posicionCaballo}
+                            setPosicionCaballo={setPosicionCaballo}
+                            tam={tam}
+                            camino={camino}
                         />}
-                        <p/>
+                        <p />
+                        <Title level={4}>Tamaño del tablero</Title>
                         <InputNumber min={4} max={8} defaultValue={6} onChange={valueOnChange} />
                     </Card>
                 </Col>
@@ -102,10 +105,10 @@ const HamiltonPage = () => {
                             variant={'underlined'}
                             onFinish={(values) => console.log(values)}
                         >
-                            <p>El tiempo de ejecucción es: {tiempo} milisegundos</p>
+
                             <Form.Item>
                                 <Radio.Group block options={options} defaultValue={0} buttonStyle="solid" optionType="button"
-                                onChange={handleOptionChange} />
+                                    onChange={handleOptionChange} />
                             </Form.Item>
 
                             <Form.Item
@@ -115,6 +118,14 @@ const HamiltonPage = () => {
                                     Ejecutar Solucion
                                 </Button>
                             </Form.Item>
+                            {tiempo !== 0 && (
+                                <Col xs={24} md={24}>
+                                    <Title level={2}>Resultados</Title>
+                                    {camino == null && <Title level={4}>No hay ciclo Hamiltoliano</Title>}
+                                    <Title level={4}>Tiempo en ms: {tiempo.toFixed(4)}</Title>
+                                    
+                                </Col>
+                            )}
                         </Form>
                     </Card>
                 </Col>
