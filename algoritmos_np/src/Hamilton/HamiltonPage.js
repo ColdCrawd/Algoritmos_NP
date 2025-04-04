@@ -19,6 +19,7 @@ const options = [
 ];
 
 const HamiltonPage = () => {
+    const [loading,setLoading] = useState(false)
     const [grafo, setGrafo] = useState(null);
     const [posicionCaballo, setPosicionCaballo] = useState(null);
     const [camino, setCamino] = useState([]);
@@ -44,6 +45,7 @@ const HamiltonPage = () => {
             : "http://localhost:3001/api/problems/comunityHamiltonSolution";
 
         try {
+            setLoading(true)
             const response = await fetch(ruta, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -60,6 +62,8 @@ const HamiltonPage = () => {
             }
         } catch (error) {
             console.error("Error al enviar datos:", error);
+        } finally {
+            setLoading(false);
         }
     }
 
@@ -114,7 +118,7 @@ const HamiltonPage = () => {
                             <Form.Item
                                 style={{ width: '100%' }}
                             >
-                                <Button type="primary" htmlType="submit" style={{ width: '100%' }} onClick={enviarBackend}>
+                                <Button type="primary" htmlType="submit" style={{ width: '100%' }} onClick={enviarBackend} loading = {loading}>
                                     Ejecutar Solucion
                                 </Button>
                             </Form.Item>
