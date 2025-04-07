@@ -5,7 +5,7 @@ Este proyecto trata de comparar dos versiones de 3 algoritmos NP, la versión pr
 Los algoritmos son: el problema del viajante, el ciclo hamiltoniano y la mochila (Knapsack).
 
 ## Instalación
-Es necesario tener tanto el frontend como el backend ejecutándose para que funcione el proyecto
+Es necesario tener tanto el frontend como el backend ejecutándose para que funcione el proyecto. Una vez ambos esten corriendo, el proyecto se ejecutara sin problema
 
 ### 1. Clonar el frontend:
   
