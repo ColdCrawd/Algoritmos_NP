@@ -42,3 +42,8 @@ Es necesario tener tanto el frontend como el backend ejecutándose para que func
 ## Autores
 - Edgar Romero (https://github.com/ColdCrawd)
 - Elkyn Santos (https://github.com/ElkynSantos)
+
+
+## Notas:
+El algoritmo de TSP no funciona debido a que el token de la libreria https://www.mapbox.com expiro.
+
